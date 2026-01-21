@@ -11,7 +11,7 @@ interface Product{
 
 export default function ProductCard({ id, name, stock, price, category} : Product){
       const theme = useContext(ThemeContext);
-      const classes = theme === 'light' ? "inline text-white" : "inline text-pink-600"
+      const classes = theme === 'light' ? " text-white" : " text-pink-600"
 
     return(
         <>
@@ -35,7 +35,7 @@ export default function ProductCard({ id, name, stock, price, category} : Produc
                     </span>
                 )}
 
-                <p><strong>Name:</strong> <div className={classes}>{name}</div></p>
+                <p><strong>Name:</strong> <span className={classes}>{name}</span></p>
                 <p><strong>Price:</strong> {price}</p>
                 <p><strong>Category:</strong> {category}</p>
                 <p><strong>Quantity:</strong> {stock}</p>
