@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { ThemeContext } from "../context/ThemeContext";
+import { useCart } from "../context/CartContext";
 
 interface Product{
     id: number;
@@ -11,8 +12,8 @@ interface Product{
 
 export default function ProductCard({ id, name, stock, price, category} : Product){
       const theme = useContext(ThemeContext);
-      const classes = theme === 'light' ? " text-white" : " text-pink-600"
-
+      const classes = theme === 'light' ? " text-white" : " text-pink-600";
+      const { addToCart } = useCart();
     return(
         <>
 
@@ -39,6 +40,8 @@ export default function ProductCard({ id, name, stock, price, category} : Produc
                 <p><strong>Price:</strong> {price}</p>
                 <p><strong>Category:</strong> {category}</p>
                 <p><strong>Quantity:</strong> {stock}</p>
+
+                <button className="bg-blue-600 text-white px-2 rounded mt-2" onClick={() => addToCart({id: id, name: name, stock:stock, price: price, category:category})}>Add to Cart</button>
             </div>
         </>
     )

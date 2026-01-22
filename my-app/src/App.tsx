@@ -3,6 +3,7 @@ import Navbar from './layout/Navbar'
 import { useState, useEffect } from 'react';
 import { ThemeContext } from './context/ThemeContext';
 import DisplayProducts from './pages/DisplayProducts';
+import { CartProvider } from './context/CartContext';
 
 interface Product{
     id: string;
@@ -39,9 +40,11 @@ function App() {
   return (
     <>
     <ThemeContext value={theme}>
+    <CartProvider>
 
       <Navbar handleClick={handleClick}/>
       <DisplayProducts/>
+    </CartProvider>
     </ThemeContext>
 
     
